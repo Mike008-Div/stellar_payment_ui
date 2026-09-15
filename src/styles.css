@@ -1,0 +1,652 @@
+/* ==========================================================================
+   Stellar Payment UI - Design System & Component Styles
+   Engineered for precision, clarity, and non-generic fintech aesthetics.
+   ========================================================================== */
+
+:root {
+  --stellar-font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --stellar-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  
+  --stellar-bg-surface: #11141b;
+  --stellar-bg-subtle: #161b24;
+  --stellar-bg-elevated: #1d2230;
+  
+  --stellar-border: rgba(255, 255, 255, 0.09);
+  --stellar-border-focus: rgba(56, 189, 248, 0.45);
+  
+  --stellar-text-primary: #f8fafc;
+  --stellar-text-secondary: #94a3b8;
+  --stellar-text-muted: #64748b;
+  
+  --stellar-accent: #0284c7;
+  --stellar-accent-hover: #0369a1;
+  --stellar-accent-light: #38bdf8;
+  --stellar-accent-glow: rgba(56, 189, 248, 0.15);
+  
+  --stellar-success: #10b981;
+  --stellar-success-bg: rgba(16, 185, 129, 0.12);
+  --stellar-success-border: rgba(16, 185, 129, 0.25);
+  
+  --stellar-danger: #f43f5e;
+  --stellar-danger-bg: rgba(244, 63, 94, 0.12);
+  --stellar-danger-border: rgba(244, 63, 94, 0.25);
+  
+  --stellar-radius-sm: 6px;
+  --stellar-radius-md: 10px;
+  --stellar-radius-lg: 14px;
+  --stellar-radius-pill: 9999px;
+  
+  --stellar-transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Generic Feedback & States
+   -------------------------------------------------------------------------- */
+.stellar-ui-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  color: var(--stellar-text-muted);
+}
+
+.stellar-ui-empty-dot {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.stellar-ui-loading {
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  color: var(--stellar-text-secondary);
+}
+
+.stellar-ui-skeleton-amount {
+  width: 140px;
+  height: 32px;
+  background: linear-gradient(90deg, #1e2430 25%, #2a3344 50%, #1e2430 75%);
+  background-size: 200% 100%;
+  animation: stellar-skeleton 1.5s infinite ease-in-out;
+  border-radius: var(--stellar-radius-sm);
+}
+
+.stellar-ui-skeleton-label {
+  width: 60px;
+  height: 12px;
+  margin-top: 6px;
+  background: #1e2430;
+  border-radius: 4px;
+}
+
+@keyframes stellar-skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.stellar-ui-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  color: var(--stellar-danger);
+  padding: 10px 12px;
+  background: var(--stellar-danger-bg);
+  border: 1px solid var(--stellar-danger-border);
+  border-radius: var(--stellar-radius-md);
+}
+
+.stellar-ui-error-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background: rgba(244, 63, 94, 0.2);
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Chips
+   -------------------------------------------------------------------------- */
+.stellar-ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: var(--stellar-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--stellar-transition);
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+}
+
+.stellar-ui-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.stellar-ui-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.stellar-ui-btn-primary {
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.stellar-ui-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #0369a1 0%, #075985 100%);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+.stellar-ui-btn-secondary {
+  background: #1a202c;
+  color: var(--stellar-text-primary);
+  border-color: var(--stellar-border);
+}
+
+.stellar-ui-btn-secondary:hover:not(:disabled) {
+  background: #232b3b;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.stellar-ui-copy-btn.is-copied {
+  background: var(--stellar-success-bg);
+  border-color: var(--stellar-success-border);
+  color: var(--stellar-success);
+}
+
+.stellar-ui-chip {
+  background: var(--stellar-bg-elevated);
+  border: 1px solid var(--stellar-border);
+  color: var(--stellar-text-secondary);
+  font-family: var(--stellar-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: var(--stellar-radius-sm);
+  cursor: pointer;
+  transition: var(--stellar-transition);
+}
+
+.stellar-ui-chip:hover {
+  border-color: var(--stellar-accent-light);
+  color: #ffffff;
+  background: #252e3f;
+}
+
+/* --------------------------------------------------------------------------
+   Balance Component
+   -------------------------------------------------------------------------- */
+.stellar-ui-balance-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stellar-ui-balance {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--stellar-font-sans);
+}
+
+.stellar-ui-balance-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.stellar-ui-balance-amount {
+  font-family: var(--stellar-font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--stellar-text-primary);
+  line-height: 1;
+}
+
+.stellar-ui-balance-asset {
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--stellar-accent-light);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 7px;
+  border-radius: var(--stellar-radius-sm);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.stellar-ui-poll-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--stellar-success);
+  background: var(--stellar-success-bg);
+  border: 1px solid var(--stellar-success-border);
+  padding: 2px 8px;
+  border-radius: var(--stellar-radius-pill);
+}
+
+.stellar-ui-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--stellar-success);
+  box-shadow: 0 0 8px var(--stellar-success);
+  animation: stellar-pulse 2s infinite;
+}
+
+@keyframes stellar-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.stellar-ui-other-balances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--stellar-border);
+}
+
+.stellar-ui-other-balance-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--stellar-font-mono);
+  font-size: 11px;
+  background: var(--stellar-bg-subtle);
+  border: 1px solid var(--stellar-border);
+  padding: 4px 8px;
+  border-radius: var(--stellar-radius-sm);
+  color: var(--stellar-text-secondary);
+}
+
+.stellar-ui-other-code {
+  font-weight: 700;
+  color: var(--stellar-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Receive QR Component
+   -------------------------------------------------------------------------- */
+.stellar-ui-receive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.stellar-ui-qr-frame {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: var(--stellar-radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.stellar-ui-qr-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 160px;
+}
+
+.stellar-ui-receive-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.stellar-ui-receive-label {
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--stellar-text-muted);
+}
+
+.stellar-ui-receive-address {
+  font-family: var(--stellar-font-mono);
+  font-size: 11px;
+  color: var(--stellar-text-secondary);
+  word-break: break-all;
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.4;
+  background: var(--stellar-bg-subtle);
+  padding: 6px 10px;
+  border-radius: var(--stellar-radius-sm);
+  border: 1px solid var(--stellar-border);
+}
+
+/* --------------------------------------------------------------------------
+   Send Payment Form
+   -------------------------------------------------------------------------- */
+.stellar-ui-send {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.stellar-ui-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stellar-ui-form-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--stellar-font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--stellar-text-primary);
+}
+
+.stellar-ui-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stellar-ui-label-row label {
+  font-family: var(--stellar-font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--stellar-text-primary);
+}
+
+.stellar-ui-label-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--stellar-text-muted);
+}
+
+.stellar-ui-quick-amounts {
+  display: flex;
+  gap: 4px;
+}
+
+.stellar-ui-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.stellar-ui-send input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  background: var(--stellar-bg-subtle);
+  border: 1px solid var(--stellar-border);
+  border-radius: var(--stellar-radius-md);
+  font-family: var(--stellar-font-mono);
+  font-size: 13px;
+  color: var(--stellar-text-primary);
+  transition: var(--stellar-transition);
+  outline: none;
+}
+
+.stellar-ui-send input::placeholder {
+  color: var(--stellar-text-muted);
+  opacity: 0.7;
+}
+
+.stellar-ui-send input:focus {
+  background: #18202d;
+  border-color: var(--stellar-border-focus);
+  box-shadow: 0 0 0 3px var(--stellar-accent-glow);
+}
+
+.stellar-ui-input-addon input {
+  padding-right: 50px;
+}
+
+.stellar-ui-addon-badge {
+  position: absolute;
+  right: 12px;
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--stellar-accent-light);
+  pointer-events: none;
+}
+
+.stellar-ui-send-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.stellar-ui-fee-notice {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  color: var(--stellar-text-muted);
+}
+
+.stellar-ui-send-btn {
+  width: 100%;
+  padding: 11px 16px;
+}
+
+.stellar-ui-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: stellar-spin 0.8s linear infinite;
+}
+
+@keyframes stellar-spin {
+  to { transform: rotate(360deg); }
+}
+
+.stellar-ui-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: var(--stellar-radius-md);
+  font-family: var(--stellar-font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.stellar-ui-status-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stellar-ui-status-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  word-break: break-all;
+}
+
+.stellar-ui-status-ok {
+  background: var(--stellar-success-bg);
+  border: 1px solid var(--stellar-success-border);
+  color: #34d399;
+}
+
+.stellar-ui-status-ok .stellar-ui-status-icon {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.stellar-ui-status-error {
+  background: var(--stellar-danger-bg);
+  border: 1px solid var(--stellar-danger-border);
+  color: #fb7185;
+}
+
+.stellar-ui-status-error .stellar-ui-status-icon {
+  background: rgba(244, 63, 94, 0.25);
+  color: #fb7185;
+}
+
+.stellar-ui-status-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.stellar-ui-status-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Transaction History List
+   -------------------------------------------------------------------------- */
+.stellar-ui-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stellar-ui-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--stellar-radius-md);
+  background: transparent;
+  transition: var(--stellar-transition);
+  border: 1px solid transparent;
+}
+
+.stellar-ui-history-item:hover {
+  background: var(--stellar-bg-subtle);
+  border-color: var(--stellar-border);
+}
+
+.stellar-ui-history-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stellar-ui-direction-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.direction-in {
+  background: var(--stellar-success-bg);
+  color: #34d399;
+  border: 1px solid var(--stellar-success-border);
+}
+
+.direction-out {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--stellar-text-secondary);
+  border: 1px solid var(--stellar-border);
+}
+
+.stellar-ui-history-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stellar-ui-history-type {
+  font-family: var(--stellar-font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--stellar-text-primary);
+}
+
+.stellar-ui-history-date {
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  color: var(--stellar-text-muted);
+}
+
+.stellar-ui-history-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.stellar-ui-history-amount {
+  font-family: var(--stellar-font-mono);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.amount-positive {
+  color: #34d399;
+}
+
+.amount-negative {
+  color: var(--stellar-text-primary);
+}
+
+.stellar-ui-history-link {
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  color: var(--stellar-text-muted);
+  text-decoration: none;
+  transition: var(--stellar-transition);
+}
+
+.stellar-ui-history-link:hover {
+  color: var(--stellar-accent-light);
+}
