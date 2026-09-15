@@ -10,6 +10,9 @@ Add a wallet-agnostic helper that builds and signs Soroban contract invocation t
 **#13 — Add Soroban integration tests**
 Run the escrow contract against a local Stellar environment or Testnet and cover funding, release, refund deadlines, authorization failures, and invalid state transitions.
 
+**#14 — Add an escrow workflow to the demo frontend**
+Add a separate React panel for creating, funding, releasing, and refunding an escrow. It should accept a deployed contract ID and token contract ID from configuration, simulate Soroban transactions before signing, show the current escrow status, and keep `SendPayment` unchanged for direct XLM transfers.
+
 ### Good first issues
 
 **#1 — Verify `useFreighter` against the current `@stellar/freighter-api`**

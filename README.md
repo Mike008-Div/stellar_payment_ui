@@ -14,7 +14,7 @@ This is UI and smart-contract tooling, not a competing wallet or app. The React 
 - **Rust and Soroban** handle optional programmable escrow rules: funding, payer-authorized release, and deadline-based refunds.
 - **Freighter** signs both the existing classic Stellar transactions and Soroban transactions when a consumer adds contract invocation code.
 
-Simple wallet-to-wallet XLM transfers should use `SendPayment` directly. Use the escrow contract when a payment needs an on-chain rule or delayed settlement.
+Simple wallet-to-wallet XLM transfers should use `SendPayment` directly. Use the escrow contract when a payment needs an on-chain rule or conditional settlement.
 
 ## Components
 
@@ -78,7 +78,7 @@ configureNetwork({ horizonUrl: "https://horizon.stellar.org", passphrase: Networ
 
 ## Soroban contract
 
-The library also includes an optional Soroban escrow contract under `contracts/escrow`. Use it when a payment needs programmable rules such as delayed release or refunds. The regular `SendPayment` component intentionally remains a direct Horizon payment because a simple wallet-to-wallet XLM transfer does not need a smart contract.
+The library also includes an optional Soroban escrow contract under `contracts/escrow`. Use it when a payment needs programmable rules such as payer-authorized release or deadline-based refunds. The regular `SendPayment` component intentionally remains a direct Horizon payment because a simple wallet-to-wallet XLM transfer does not need a smart contract.
 
 The escrow contract exposes four lifecycle methods:
 

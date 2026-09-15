@@ -1,13 +1,15 @@
 # Soroban escrow contract
 
-This contract adds programmable escrow without changing the existing direct XLM payment flow.
+This contract adds programmable escrow without changing the existing direct XLM payment flow. It is a reference contract for Testnet evaluation, not a production-audited financial primitive.
 
 ## Lifecycle
 
 1. `create(payer, payee, asset, amount, release_after)` creates an unfunded escrow.
 2. `fund(escrow_id)` transfers the asset from the payer to the contract.
-3. `release(escrow_id)` transfers the funds to the payee. The payer must authorize it.
+3. `release(escrow_id)` transfers the funds to the payee immediately when the payer authorizes it.
 4. `refund(escrow_id)` returns the funds to the payer after `release_after`.
+
+Deadlines must be in the future and no more than 30 days ahead, matching the contract's persistent-storage TTL.
 
 The contract accepts any Soroban-compatible token contract address. For native XLM, use Stellar's wrapped native asset contract rather than `Asset.native()` from a classic transaction.
 

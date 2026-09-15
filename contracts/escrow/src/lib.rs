@@ -4,6 +4,7 @@ use soroban_sdk::{contract, contracterror, contractimpl, contracttype, token, Ad
 
 const DAY_IN_LEDGERS: u32 = 17280;
 const MAX_ESCROW_TTL: u32 = DAY_IN_LEDGERS * 30;
+const MAX_ESCROW_DURATION_SECONDS: u64 = 60 * 60 * 24 * 30;
 
 #[derive(Clone, Debug, Eq, PartialEq)]
 #[contracttype]
@@ -62,7 +63,8 @@ impl EscrowContract {
         if amount <= 0 {
             return Err(Error::InvalidAmount);
         }
-        if release_after <= env.ledger().timestamp() {
+        let now = env.ledger().timestamp();
+        if release_after <= now || release_after > now.saturating_add(MAX_ESCROW_DURATION_SECONDS) {
             return Err(Error::InvalidDeadline);
         }
 
@@ -177,6 +179,7 @@ mod test {
     #[test]
     fn create_rejects_invalid_amount_and_deadline() {
         let env = Env::default();
+        env.mock_all_auths();
         let contract_id = env.register_contract(None, EscrowContract);
         let client = EscrowContractClient::new(&env, &contract_id);
         let payer = Address::generate(&env);
@@ -189,6 +192,10 @@ mod test {
         );
         assert_eq!(
             client.try_create(&payer, &payee, &asset, &1, &0),
+            Err(Ok(Error::InvalidDeadline))
+        );
+        assert_eq!(
+            client.try_create(&payer, &payee, &asset, &1, &MAX_ESCROW_DURATION_SECONDS + 1),
             Err(Ok(Error::InvalidDeadline))
         );
     }
