@@ -8,7 +8,7 @@ import freighterApi from "@stellar/freighter-api";
  *
  * NOTE: @stellar/freighter-api's exact method names have shifted across
  * major versions. Check the installed version's docs if `connect`/
- * `signTransaction` below don't match — see ISSUES.md #2.
+ * `signTransaction` below don't match — see ISSUES.md #1.
  */
 export function useFreighter() {
   const [publicKey, setPublicKey] = useState(null);

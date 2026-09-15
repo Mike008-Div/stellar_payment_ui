@@ -1,6 +1,14 @@
 # Issues / Roadmap
 
-Core components (`Balance`, `ReceiveQR`, `SendPayment`, `TransactionHistory`) and hooks (`useStellarAccount`, `useFreighter`) are implemented, bundle-tested, and render-tested. The tasks below are the remaining work — each is independent, so several contributors can pick up different ones in parallel.
+The React components and hooks are implemented, and the optional Rust/Soroban escrow contract is available under `contracts/escrow`. The UI package handles direct payments and Horizon data; the contract handles programmable escrow rules. The tasks below are the remaining work — each is independent, so several contributors can pick up different ones in parallel.
+
+### Soroban follow-up
+
+**#12 — Add a React escrow adapter**
+Add a wallet-agnostic helper that builds and signs Soroban contract invocation transactions for the deployed escrow contract. Keep it separate from `SendPayment`, because direct classic payments and contract calls have different transaction-building and simulation requirements.
+
+**#13 — Add Soroban integration tests**
+Run the escrow contract against a local Stellar environment or Testnet and cover funding, release, refund deadlines, authorization failures, and invalid state transitions.
 
 ### Good first issues
 

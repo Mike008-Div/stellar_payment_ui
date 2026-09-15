@@ -3,8 +3,8 @@ import { TransactionBuilder, Operation, Asset, Memo, BASE_FEE } from "@stellar/s
 import { getServer, getNetworkPassphrase } from "../lib/horizon.js";
 
 /**
- * A self-contained send-payment form. Builds a native-XLM payment
- * transaction, hands it to `signTransaction` (wallet-agnostic — pass
+ * A self-contained direct-payment form. Builds a native-XLM classic
+ * Stellar transaction, hands it to `signTransaction` (wallet-agnostic — pass
  * `useFreighter().signTransaction` or your own), then submits it.
  *
  * @param {string} sourcePublicKey - the connected account sending the payment

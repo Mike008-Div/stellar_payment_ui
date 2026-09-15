@@ -21,7 +21,7 @@ export default function App() {
     <div className="demo">
       <h1>Stellar Payment UI</h1>
       <p className="demo-subtitle">
-        Drop-in React components for Stellar payments — this demo runs against Testnet.
+        React payment components for Stellar — this direct-payment demo runs against Testnet.
       </p>
 
       <div className="demo-wallet-bar">

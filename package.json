@@ -1,7 +1,7 @@
 {
   "name": "stellar-payment-ui",
   "version": "0.1.0",
-  "description": "Drop-in React components for Stellar payments: balance display, send form, receive QR, and transaction history.",
+  "description": "React components for Stellar payments, plus an optional Rust/Soroban escrow contract.",
   "type": "module",
   "main": "dist/stellar-payment-ui.cjs.js",
   "module": "dist/stellar-payment-ui.es.js",
@@ -18,7 +18,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "contract:test": "cargo test -p stellar-payment-escrow",
+    "contract:format": "cargo fmt --all -- --check",
+    "contract:build": "cargo build -p stellar-payment-escrow --target wasm32-unknown-unknown --release"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -35,6 +38,6 @@
     "react-dom": "^18.3.1",
     "vite": "^5.4.0"
   },
-  "keywords": ["stellar", "react", "payments", "wallet", "freighter", "ui-components", "soroban"],
+  "keywords": ["stellar", "react", "payments", "wallet", "freighter", "ui-components", "soroban", "rust", "escrow"],
   "license": "MIT"
 }

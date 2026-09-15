@@ -1,5 +1,6 @@
 {
   "name": "stellar-payment-ui-demo",
+  "description": "Testnet demo for the Stellar Payment UI React components.",
   "private": true,
   "type": "module",
   "scripts": {
