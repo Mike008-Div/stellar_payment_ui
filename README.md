@@ -80,11 +80,18 @@ configureNetwork({ horizonUrl: "https://horizon.stellar.org", passphrase: Networ
 
 The library also includes an optional Soroban escrow contract under `contracts/escrow`. Use it when a payment needs programmable rules such as delayed release or refunds. The regular `SendPayment` component intentionally remains a direct Horizon payment because a simple wallet-to-wallet XLM transfer does not need a smart contract.
 
+The escrow contract exposes four lifecycle methods:
+
+- `create` stores the payer, payee, token contract, amount, and release deadline.
+- `fund` moves the payer's tokens into the contract.
+- `release` sends funded tokens to the payee after payer authorization.
+- `refund` returns funded tokens to the payer once the deadline has passed.
+
 See [contracts/escrow/README.md](contracts/escrow/README.md) for the contract lifecycle, build commands, and Testnet deployment outline.
 
 ## Status
 
-Core components are implemented and render-tested. See `ISSUES.md` for the remaining scoped work — mostly polish, additional wallets, and hardening — sized for multiple contributors to pick up independently.
+The React components and the initial Rust/Soroban escrow contract are implemented. The UI build, demo build, Rust formatting, and contract source checks are part of the local workflow. Contract execution tests and a frontend escrow adapter remain tracked in `ISSUES.md`.
 
 ## License
 

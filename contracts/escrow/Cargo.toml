@@ -3,6 +3,7 @@ name = "stellar-payment-escrow"
 version = "0.1.0"
 edition = "2021"
 publish = false
+description = "Soroban escrow contract for programmable Stellar token payments"
 
 [lib]
 crate-type = ["cdylib"]
