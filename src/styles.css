@@ -749,3 +749,23 @@
 .stellar-ui-history-link:hover {
   color: var(--stellar-accent-light);
 }
+
+.stellar-ui-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.stellar-ui-history-pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.stellar-ui-load-more-btn {
+  width: 100%;
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
