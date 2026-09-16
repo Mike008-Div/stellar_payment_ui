@@ -6,5 +6,9 @@ export { ErrorBoundary } from "./components/ErrorBoundary.jsx";
 
 export { useStellarAccount } from "./hooks/useStellarAccount.js";
 export { useFreighter } from "./hooks/useFreighter.js";
+export { useAlbedo } from "./hooks/useAlbedo.js";
+export { useXBull } from "./hooks/useXBull.js";
+export { useWallet } from "./hooks/useWallet.js";
 
 export { configureNetwork } from "./lib/horizon.js";
+
