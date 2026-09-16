@@ -10,14 +10,16 @@
   "type": "module",
   "main": "dist/stellar-payment-ui.cjs.js",
   "module": "dist/stellar-payment-ui.es.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
+      "types": "./src/index.d.ts",
       "import": "./dist/stellar-payment-ui.es.js",
       "require": "./dist/stellar-payment-ui.cjs.js"
     },
     "./style.css": "./dist/style.css"
   },
-  "files": ["dist"],
+  "files": ["dist", "src/index.d.ts"],
   "engines": {
     "node": ">=18"
   },
