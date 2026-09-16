@@ -5,8 +5,17 @@ import { QRCodeSVG } from "qrcode.react";
  * Shows a scannable QR code for the account's public key, plus a
  * copy-to-clipboard button.
  */
-export function ReceiveQR({ publicKey, size = 180 }) {
+export function ReceiveQR({ publicKey, size = 180, loading = false }) {
   const [copied, setCopied] = useState(false);
+
+  if (loading) {
+    return (
+      <div className="stellar-ui-receive stellar-ui-loading">
+        <div className="stellar-ui-skeleton-qr" style={{ width: size, height: size }}></div>
+        <div className="stellar-ui-skeleton-label" style={{ width: 120, margin: "12px auto 0" }}></div>
+      </div>
+    );
+  }
 
   if (!publicKey) {
     return <div className="stellar-ui-receive stellar-ui-empty">No account connected</div>;
