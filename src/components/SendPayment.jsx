@@ -3,21 +3,53 @@ import { TransactionBuilder, Operation, Asset, Memo, BASE_FEE } from "@stellar/s
 import { getServer, getNetworkPassphrase } from "../lib/horizon.js";
 
 /**
- * A self-contained direct-payment form. Builds a native-XLM classic
- * Stellar transaction, hands it to `signTransaction` (wallet-agnostic — pass
- * `useFreighter().signTransaction` or your own), then submits it.
+ * A self-contained direct-payment form. Builds a classic Stellar payment transaction,
+ * supporting native XLM and custom trustline assets, hands it to `signTransaction`,
+ * then submits it.
  *
  * @param {string} sourcePublicKey - the connected account sending the payment
  * @param {(xdr: string) => Promise<string>} signTransaction - returns a signed XDR string
+ * @param {Asset | { code: string, issuer?: string } | "native"} [asset] - default or fixed asset
+ * @param {Array<Asset | { code: string, issuer?: string, type?: string }>} [assets] - optional list of selectable assets
  * @param {(result: object) => void} [onSuccess]
  * @param {(error: Error) => void} [onError]
  */
-export function SendPayment({ sourcePublicKey, signTransaction, onSuccess, onError }) {
+export function SendPayment({
+  sourcePublicKey,
+  signTransaction,
+  asset,
+  assets,
+  onSuccess,
+  onError,
+}) {
   const [destination, setDestination] = useState("");
   const [amount, setAmount] = useState("");
   const [memo, setMemo] = useState("");
+  const [selectedAssetIndex, setSelectedAssetIndex] = useState(0);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(null);
+
+  // Helper to build a Stellar Asset object
+  function buildStellarAsset(assetDef) {
+    if (!assetDef || assetDef === "native" || assetDef.type === "native") {
+      return Asset.native();
+    }
+    if (assetDef instanceof Asset) {
+      return assetDef;
+    }
+    if (assetDef.code && assetDef.code.toUpperCase() === "XLM" && !assetDef.issuer) {
+      return Asset.native();
+    }
+    if (assetDef.code && assetDef.issuer) {
+      return new Asset(assetDef.code, assetDef.issuer);
+    }
+    return Asset.native();
+  }
+
+  const activeAssetList = assets && assets.length > 0 ? assets : asset ? [asset] : [{ type: "native", code: "XLM" }];
+  const currentAssetDef = activeAssetList[selectedAssetIndex] || activeAssetList[0];
+  const stellarAsset = buildStellarAsset(currentAssetDef);
+  const assetCode = stellarAsset.isNative() ? "XLM" : stellarAsset.getCode();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -38,7 +70,7 @@ export function SendPayment({ sourcePublicKey, signTransaction, onSuccess, onErr
         fee: BASE_FEE,
         networkPassphrase: getNetworkPassphrase(),
       }).addOperation(
-        Operation.payment({ destination, asset: Asset.native(), amount })
+        Operation.payment({ destination, asset: stellarAsset, amount })
       );
 
       if (memo) builder.addMemo(Memo.text(memo));
@@ -93,7 +125,7 @@ export function SendPayment({ sourcePublicKey, signTransaction, onSuccess, onErr
                 className="stellar-ui-chip"
                 onClick={() => setAmount(preset)}
               >
-                {preset} XLM
+                {preset} {assetCode}
               </button>
             ))}
           </div>
@@ -108,7 +140,25 @@ export function SendPayment({ sourcePublicKey, signTransaction, onSuccess, onErr
             required
             autoComplete="off"
           />
-          <span className="stellar-ui-addon-badge">XLM</span>
+          {activeAssetList.length > 1 ? (
+            <select
+              className="stellar-ui-addon-select"
+              value={selectedAssetIndex}
+              onChange={(e) => setSelectedAssetIndex(Number(e.target.value))}
+              aria-label="Select asset"
+            >
+              {activeAssetList.map((a, i) => {
+                const code = a.code || (a.isNative?.() || a.type === "native" ? "XLM" : "ASSET");
+                return (
+                  <option key={i} value={i}>
+                    {code}
+                  </option>
+                );
+              })}
+            </select>
+          ) : (
+            <span className="stellar-ui-addon-badge">{assetCode}</span>
+          )}
         </div>
       </div>
 

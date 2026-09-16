@@ -521,6 +521,27 @@
   pointer-events: none;
 }
 
+.stellar-ui-addon-select {
+  position: absolute;
+  right: 6px;
+  background: var(--stellar-bg-elevated);
+  color: var(--stellar-accent-light);
+  border: 1px solid var(--stellar-border);
+  border-radius: var(--stellar-radius-sm);
+  padding: 4px 8px;
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: var(--stellar-transition);
+}
+
+.stellar-ui-addon-select:hover {
+  border-color: var(--stellar-border-focus);
+}
+
+
 .stellar-ui-send-footer {
   display: flex;
   flex-direction: column;
