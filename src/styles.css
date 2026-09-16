@@ -39,6 +39,44 @@
   --stellar-transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+[data-stellar-theme="light"],
+.stellar-ui-theme-light {
+  --stellar-bg-surface: #ffffff;
+  --stellar-bg-subtle: #f8fafc;
+  --stellar-bg-elevated: #f1f5f9;
+  
+  --stellar-border: rgba(0, 0, 0, 0.09);
+  --stellar-border-focus: rgba(2, 132, 199, 0.45);
+  
+  --stellar-text-primary: #0f172a;
+  --stellar-text-secondary: #475569;
+  --stellar-text-muted: #94a3b8;
+  
+  --stellar-accent: #0284c7;
+  --stellar-accent-hover: #0369a1;
+  --stellar-accent-light: #0284c7;
+  --stellar-accent-glow: rgba(2, 132, 199, 0.15);
+}
+
+[data-stellar-theme="dark"],
+.stellar-ui-theme-dark {
+  --stellar-bg-surface: #11141b;
+  --stellar-bg-subtle: #161b24;
+  --stellar-bg-elevated: #1d2230;
+  
+  --stellar-border: rgba(255, 255, 255, 0.09);
+  --stellar-border-focus: rgba(56, 189, 248, 0.45);
+  
+  --stellar-text-primary: #f8fafc;
+  --stellar-text-secondary: #94a3b8;
+  --stellar-text-muted: #64748b;
+}
+
+.stellar-ui-theme-root {
+  display: contents;
+}
+
+
 /* --------------------------------------------------------------------------
    Generic Feedback & States
    -------------------------------------------------------------------------- */
