@@ -80,6 +80,48 @@
   border-radius: 4px;
 }
 
+.stellar-ui-skeleton-qr {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(90deg, #1e2430 25%, #2a3344 50%, #1e2430 75%);
+  background-size: 200% 100%;
+  animation: stellar-skeleton 1.5s infinite ease-in-out;
+  border-radius: var(--stellar-radius-md);
+  margin: 0 auto;
+}
+
+.stellar-ui-skeleton-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  gap: 12px;
+  border-bottom: 1px solid var(--stellar-border);
+}
+
+.stellar-ui-skeleton-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1e2430;
+  flex-shrink: 0;
+}
+
+.stellar-ui-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.stellar-ui-skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, #1e2430 25%, #2a3344 50%, #1e2430 75%);
+  background-size: 200% 100%;
+  animation: stellar-skeleton 1.5s infinite ease-in-out;
+  border-radius: 4px;
+}
+
 @keyframes stellar-skeleton {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }

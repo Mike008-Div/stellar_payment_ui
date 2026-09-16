@@ -44,7 +44,22 @@ export function TransactionHistory({ publicKey, limit = 10 }) {
     return <div className="stellar-ui-history stellar-ui-empty">No account connected</div>;
   }
   if (loading) {
-    return <div className="stellar-ui-history stellar-ui-loading">Loading transactions…</div>;
+    return (
+      <div className="stellar-ui-history stellar-ui-loading-list">
+        {[1, 2, 3].map((n) => (
+          <div key={n} className="stellar-ui-skeleton-row">
+            <div style={{ display: "flex", alignItems: "center", gap: 10, flex: 1 }}>
+              <div className="stellar-ui-skeleton-circle"></div>
+              <div className="stellar-ui-skeleton-lines">
+                <div className="stellar-ui-skeleton-line" style={{ width: "60%" }}></div>
+                <div className="stellar-ui-skeleton-line" style={{ width: "35%", height: 10 }}></div>
+              </div>
+            </div>
+            <div className="stellar-ui-skeleton-line" style={{ width: 65, height: 14 }}></div>
+          </div>
+        ))}
+      </div>
+    );
   }
   if (error) {
     return <div className="stellar-ui-history stellar-ui-error">Error: {error}</div>;
