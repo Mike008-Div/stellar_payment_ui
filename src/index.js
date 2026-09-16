@@ -10,6 +10,9 @@ export { useFreighter } from "./hooks/useFreighter.js";
 export { useAlbedo } from "./hooks/useAlbedo.js";
 export { useXBull } from "./hooks/useXBull.js";
 export { useWallet } from "./hooks/useWallet.js";
+export { useEscrowContract } from "./hooks/useEscrowContract.js";
 
 export { configureNetwork } from "./lib/horizon.js";
+export { configureSorobanRpc } from "./lib/soroban.js";
+
 
