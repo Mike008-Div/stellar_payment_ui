@@ -150,6 +150,42 @@
   border-radius: 4px;
 }
 
+.stellar-ui-error-boundary {
+  padding: 20px;
+  background: var(--stellar-bg-subtle);
+  border: 1px solid var(--stellar-danger-border);
+  border-radius: var(--stellar-radius-lg);
+  color: var(--stellar-text-primary);
+  font-family: var(--stellar-font-sans);
+}
+
+.stellar-ui-error-boundary-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--stellar-danger);
+  margin-bottom: 8px;
+}
+
+.stellar-ui-error-boundary-header h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.stellar-ui-error-boundary-message {
+  font-size: 13px;
+  color: var(--stellar-text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.stellar-ui-error-boundary-actions {
+  display: flex;
+  gap: 10px;
+}
+
+
 /* --------------------------------------------------------------------------
    Buttons & Chips
    -------------------------------------------------------------------------- */
