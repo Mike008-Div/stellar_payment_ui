@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getServer } from "../lib/horizon.js";
 
 /**
- * Lists an account's recent payments (incoming and outgoing).
+ * This lists an account's recent payments (incoming and outgoing).
  */
 export function TransactionHistory({ publicKey, limit = 10 }) {
   const [payments, setPayments] = useState([]);
