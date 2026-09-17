@@ -1,7 +1,7 @@
 import { useStellarAccount } from "../hooks/useStellarAccount.js";
 
 /**
- * Displays an account's native XLM balance.
+ * This Displays an account's native XLM balance.
  *
  * @param {string} publicKey
  * @param {number} [pollMs] - re-fetch interval in ms, 0 = no polling
