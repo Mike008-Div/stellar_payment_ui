@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 
 /**
- * Hook for xBull Wallet integration.
+ * This is a hook for xBull Wallet integration.
  * Connects via window.xBullSDK browser extension.
  */
 export function useXBull() {
