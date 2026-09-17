@@ -6,7 +6,7 @@ const ThemeContext = createContext({
 });
 
 /**
- * Custom hook to access current theme context.
+ * This is a custom hook to access current theme context.
  */
 export function useTheme() {
   return useContext(ThemeContext);
