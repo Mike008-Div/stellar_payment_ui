@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 /**
- * React Error Boundary component designed specifically for Stellar Payment UI.
+ * This is a React Error Boundary component designed specifically for Stellar Payment UI.
  * Catches render-time exceptions (e.g. malformed Horizon payloads, network drops)
  * and provides user-friendly fallback with a retry mechanism.
  */
