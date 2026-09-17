@@ -2,7 +2,7 @@ import { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
 /**
- * Shows a scannable QR code for the account's public key, plus a
+ * This shows a scannable QR code for the account's public key, plus a
  * copy-to-clipboard button.
  */
 export function ReceiveQR({ publicKey, size = 180, loading = false }) {
