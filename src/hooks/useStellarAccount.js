@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { getServer } from "../lib/horizon.js";
 
 /**
- * Loads (and optionally polls) an account's balances from Horizon.
+ * This loads (and optionally polls) an account's balances from Horizon.
  *
  * @param {string} publicKey - the account to load, or null/undefined
  * @param {{ pollMs?: number }} options - pollMs: re-fetch interval, 0 = no polling
