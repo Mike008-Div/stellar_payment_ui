@@ -3,7 +3,7 @@ import { TransactionBuilder, Operation, Asset, Memo, BASE_FEE } from "@stellar/s
 import { getServer, getNetworkPassphrase } from "../lib/horizon.js";
 
 /**
- * A self-contained direct-payment form. Builds a classic Stellar payment transaction,
+ * This is a self-contained direct-payment form. Builds a classic Stellar payment transaction,
  * supporting native XLM and custom trustline assets, hands it to `signTransaction`,
  * then submits it.
  *
