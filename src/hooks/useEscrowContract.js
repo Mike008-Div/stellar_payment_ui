@@ -3,7 +3,7 @@ import { Address, nativeToScVal, scValToNative } from "@stellar/stellar-sdk";
 import { buildContractCall, submitSorobanTransaction, getSorobanServer } from "../lib/soroban.js";
 
 /**
- * Hook to manage Soroban Escrow contract interactions:
+ * This is a hook to manage Soroban Escrow contract interactions:
  * create, fund, release, refund, and fetch escrow details.
  *
  * @param {string} contractId - Deployed Escrow contract address (C...)
