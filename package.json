@@ -10,20 +10,24 @@
   "type": "module",
   "main": "dist/stellar-payment-ui.cjs.js",
   "module": "dist/stellar-payment-ui.es.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
+      "types": "./src/index.d.ts",
       "import": "./dist/stellar-payment-ui.es.js",
       "require": "./dist/stellar-payment-ui.cjs.js"
     },
     "./style.css": "./dist/style.css"
   },
-  "files": ["dist"],
+  "files": ["dist", "src/index.d.ts"],
   "engines": {
     "node": ">=18"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "contract:test": "cargo test -p stellar-payment-escrow",
     "contract:format": "cargo fmt --all -- --check",
     "contract:build": "cargo build -p stellar-payment-escrow --target wasm32-unknown-unknown --release"
@@ -41,7 +45,9 @@
     "@vitejs/plugin-react": "^4.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vite": "^5.4.0"
+    "vite": "^5.4.0",
+    "vitest": "^2.0.5",
+    "jsdom": "^24.1.1"
   },
   "keywords": ["stellar", "react", "payments", "wallet", "freighter", "ui-components", "soroban", "rust", "escrow"],
   "license": "MIT"

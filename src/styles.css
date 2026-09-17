@@ -39,6 +39,44 @@
   --stellar-transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+[data-stellar-theme="light"],
+.stellar-ui-theme-light {
+  --stellar-bg-surface: #ffffff;
+  --stellar-bg-subtle: #f8fafc;
+  --stellar-bg-elevated: #f1f5f9;
+  
+  --stellar-border: rgba(0, 0, 0, 0.09);
+  --stellar-border-focus: rgba(2, 132, 199, 0.45);
+  
+  --stellar-text-primary: #0f172a;
+  --stellar-text-secondary: #475569;
+  --stellar-text-muted: #94a3b8;
+  
+  --stellar-accent: #0284c7;
+  --stellar-accent-hover: #0369a1;
+  --stellar-accent-light: #0284c7;
+  --stellar-accent-glow: rgba(2, 132, 199, 0.15);
+}
+
+[data-stellar-theme="dark"],
+.stellar-ui-theme-dark {
+  --stellar-bg-surface: #11141b;
+  --stellar-bg-subtle: #161b24;
+  --stellar-bg-elevated: #1d2230;
+  
+  --stellar-border: rgba(255, 255, 255, 0.09);
+  --stellar-border-focus: rgba(56, 189, 248, 0.45);
+  
+  --stellar-text-primary: #f8fafc;
+  --stellar-text-secondary: #94a3b8;
+  --stellar-text-muted: #64748b;
+}
+
+.stellar-ui-theme-root {
+  display: contents;
+}
+
+
 /* --------------------------------------------------------------------------
    Generic Feedback & States
    -------------------------------------------------------------------------- */
@@ -80,6 +118,48 @@
   border-radius: 4px;
 }
 
+.stellar-ui-skeleton-qr {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(90deg, #1e2430 25%, #2a3344 50%, #1e2430 75%);
+  background-size: 200% 100%;
+  animation: stellar-skeleton 1.5s infinite ease-in-out;
+  border-radius: var(--stellar-radius-md);
+  margin: 0 auto;
+}
+
+.stellar-ui-skeleton-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  gap: 12px;
+  border-bottom: 1px solid var(--stellar-border);
+}
+
+.stellar-ui-skeleton-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1e2430;
+  flex-shrink: 0;
+}
+
+.stellar-ui-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.stellar-ui-skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, #1e2430 25%, #2a3344 50%, #1e2430 75%);
+  background-size: 200% 100%;
+  animation: stellar-skeleton 1.5s infinite ease-in-out;
+  border-radius: 4px;
+}
+
 @keyframes stellar-skeleton {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
@@ -107,6 +187,42 @@
   background: rgba(244, 63, 94, 0.2);
   border-radius: 4px;
 }
+
+.stellar-ui-error-boundary {
+  padding: 20px;
+  background: var(--stellar-bg-subtle);
+  border: 1px solid var(--stellar-danger-border);
+  border-radius: var(--stellar-radius-lg);
+  color: var(--stellar-text-primary);
+  font-family: var(--stellar-font-sans);
+}
+
+.stellar-ui-error-boundary-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--stellar-danger);
+  margin-bottom: 8px;
+}
+
+.stellar-ui-error-boundary-header h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.stellar-ui-error-boundary-message {
+  font-size: 13px;
+  color: var(--stellar-text-secondary);
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.stellar-ui-error-boundary-actions {
+  display: flex;
+  gap: 10px;
+}
+
 
 /* --------------------------------------------------------------------------
    Buttons & Chips
@@ -443,6 +559,27 @@
   pointer-events: none;
 }
 
+.stellar-ui-addon-select {
+  position: absolute;
+  right: 6px;
+  background: var(--stellar-bg-elevated);
+  color: var(--stellar-accent-light);
+  border: 1px solid var(--stellar-border);
+  border-radius: var(--stellar-radius-sm);
+  padding: 4px 8px;
+  font-family: var(--stellar-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: var(--stellar-transition);
+}
+
+.stellar-ui-addon-select:hover {
+  border-color: var(--stellar-border-focus);
+}
+
+
 .stellar-ui-send-footer {
   display: flex;
   flex-direction: column;
@@ -650,3 +787,23 @@
 .stellar-ui-history-link:hover {
   color: var(--stellar-accent-light);
 }
+
+.stellar-ui-history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.stellar-ui-history-pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.stellar-ui-load-more-btn {
+  width: 100%;
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
