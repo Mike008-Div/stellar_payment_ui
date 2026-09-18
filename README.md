@@ -65,16 +65,45 @@ The project requires Rust and Cargo for the Soroban workspace. The Stellar CLI i
 
 The demo (`demo/`) wires all four UI components together behind a "Connect Freighter" button, running against Stellar Testnet. It demonstrates direct payments; the escrow contract is deployed and integrated separately because it requires a contract ID and token configuration.
 
-## Network
+## Network Configuration
 
-Defaults to Testnet. To point at a different network/Horizon instance:
+By default, the library targets Stellar **Testnet** (`https://horizon-testnet.stellar.org` with `Networks.TESTNET`).
 
-```js
+### Supported Networks & Horizon Endpoints
+
+| Network | Horizon Endpoint | Network Passphrase (`Networks.*`) |
+|---|---|---|
+| **Testnet** (Default) | `https://horizon-testnet.stellar.org` | `Networks.TESTNET` |
+| **Mainnet (Public)** | `https://horizon.stellar.org` | `Networks.PUBLIC` |
+| **Futurenet** | `https://horizon-futurenet.stellar.org` | `Networks.FUTURENET` |
+| **Local Standalone** | `http://localhost:8000` | `Networks.STANDALONE` |
+
+### Setting the Network
+
+Call `configureNetwork` once at application startup before rendering any payment components:
+
+```javascript
 import { configureNetwork } from "stellar-payment-ui";
 import { Networks } from "@stellar/stellar-sdk";
 
-configureNetwork({ horizonUrl: "https://horizon.stellar.org", passphrase: Networks.PUBLIC });
+// For production Mainnet:
+configureNetwork({
+  horizonUrl: "https://horizon.stellar.org",
+  passphrase: Networks.PUBLIC,
+});
+
+// Or explicitly for Testnet:
+configureNetwork({
+  horizonUrl: "https://horizon-testnet.stellar.org",
+  passphrase: Networks.TESTNET,
+});
 ```
+
+### Safety & Network Mismatch Prevention
+
+- **Wallet Alignment:** Ensure your connected wallet (e.g., Freighter, Albedo, xBull) is switched to the same network configured in `configureNetwork`. If the component submits a transaction signed for Testnet against Mainnet (or vice versa), the transaction hash and signatures will fail network passphrase validation with a `tx_bad_auth` error.
+- **Environment Separation:** Use environment variables (e.g., `VITE_STELLAR_NETWORK=TESTNET` or `PUBLIC`) to avoid accidentally submitting live payments during testing.
+- **Friendbot Funding:** New Testnet accounts can be funded using Friendbot (`https://friendbot.stellar.org?addr=<PUBLIC_KEY>`), while Mainnet accounts require real XLM funding.
 
 ## Soroban contract
 
