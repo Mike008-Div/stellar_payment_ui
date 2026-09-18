@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import freighterApi from "@stellar/freighter-api";
 
 /**
- * Wraps the Freighter browser-extension wallet. Exposes a wallet-agnostic
+ * This wraps the Freighter browser-extension wallet. Exposes a wallet-agnostic
  * `signTransaction(xdr)` so UI components don't need to know which wallet
  * they're talking to.
  *

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 
 /**
- * Hook for Albedo wallet integration.
+ * This is a hook for Albedo wallet integration.
  * Connects via window.albedo or web intents with zero external runtime bundle bloat.
  */
 export function useAlbedo() {

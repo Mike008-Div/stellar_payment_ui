@@ -4,7 +4,7 @@ import { useAlbedo } from "./useAlbedo.js";
 import { useXBull } from "./useXBull.js";
 
 /**
- * Unified multi-wallet selector hook for Stellar Payment UI.
+ * This is a unified multi-wallet selector hook for Stellar Payment UI.
  * Allows switching between Freighter, Albedo, and xBull wallets seamlessly.
  *
  * @param {string} [initialWallet="freighter"] - "freighter" | "albedo" | "xbull"

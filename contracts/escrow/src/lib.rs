@@ -81,9 +81,10 @@ impl EscrowContract {
             asset,
             amount,
             release_after,
-            status: EscrowStatus::Created,
+            status: EscrowStatus::Created ,
         };
 
+        
         let storage = env.storage().persistent();
         storage.set(&DataKey::Escrow(id), &escrow);
         storage.set(&DataKey::NextId, &next_id);
